@@ -26,10 +26,13 @@ public class AuthentificationController {
 
     public static Clients isClientAuth(String email, String password){
         for (Clients client: new ClientDao().all()){
-            if(Objects.equals(client.getEmail(), email) && Objects.equals(client.getPassword(), password)){
+            if(Objects.equals(client.getEmail(), email) && hash.verifiedPassword(client.getPassword(), password)){
                 return client;
             }
         }
         return null;
     }
+
+
+
 }

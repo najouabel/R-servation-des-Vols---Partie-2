@@ -2,11 +2,15 @@ package Servlets.Client;
 
 import Controllers.ClientController;
 import Entity.Clients;
+import Services.hash;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 
 import java.io.IOException;
 
@@ -27,13 +31,14 @@ public class ClientRegisterServlet extends HttpServlet {
         int phone = Integer.parseInt(request.getParameter("phone"));
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String hashedPassword =  hash.getHashedPassword(password);;
 
         Clients client = new Clients();
         client.setName(name);
         client.setPrenom(prenom);
         client.setPhone(phone);
         client.setEmail(email);
-        client.setPassword(password);
+        client.setPassword(hashedPassword);
 
         boolean success = clientController.registerClient(client);
 

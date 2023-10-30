@@ -28,9 +28,7 @@ public class Clients {
     @Basic
     @Column(name = "password")
     private String password;
-    @Basic
-    @Column(name = "genre")
-    private String genre;
+
     @OneToMany(mappedBy = "clientsByIdClient")
     private Collection<Paiement> paiementsById;
     @OneToMany(mappedBy = "clientsByIdClient")
@@ -44,11 +42,9 @@ public class Clients {
         this.id = id;
     }
 
-    public String getGenre() { return genre;}
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
+
+
 
     public int getCode() {
         return code;

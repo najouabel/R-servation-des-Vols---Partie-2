@@ -19,16 +19,10 @@ public class VolsDao implements BaseDao<Vols> {
         entityTransaction = entityManager.getTransaction();
     }
 
-
-
-
-
     @Override
     public Optional<Vols> findById(Long id) {
         return Optional.ofNullable(entityManager.find(Vols.class, id));
     }
-
-
 
     @Override
     public Vols save(Vols vol) {
@@ -55,7 +49,6 @@ public class VolsDao implements BaseDao<Vols> {
         return entityManager.createQuery("from Vols", Vols.class).getResultList();
     }
 
-
     @Override
     public Boolean update(Long id, Vols vol) {
         try {
@@ -72,7 +65,6 @@ public class VolsDao implements BaseDao<Vols> {
             entityManager.close();
         }
     }
-
     @Override
     public Boolean delete(Long id) {
         try {
